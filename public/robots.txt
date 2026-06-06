@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap Direction Config
+Sitemap: https://toolhub.com/sitemap.xml

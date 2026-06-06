@@ -1,0 +1,6 @@
+{
+  "name": "ToolHub",
+  "description": "Free online utility tools for everyday tasks. Fast, responsive, and completely free.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
