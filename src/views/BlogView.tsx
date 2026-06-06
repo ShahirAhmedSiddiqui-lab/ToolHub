@@ -26,32 +26,35 @@ export default function BlogView({ onSelectTool, onClose }: BlogViewProps) {
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
 
-  // Set up standard hash tracking to allow direct links to individual blog articles e.g., #/policy/blog?id=strong-passwords
+  const navigateToPath = (path: string) => {
+    window.history.pushState(null, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
+  // Set up path tracking to allow direct links to individual blog articles e.g., /blog/strong-passwords
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash.includes('blog-id=')) {
-        const id = hash.split('blog-id=')[1];
-        if (id) {
-          setSelectedArticleId(id);
-          window.scrollTo({ top: 0, behavior: 'instant' });
-          return;
-        }
+    const handlePath = () => {
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (path.startsWith('/blog/')) {
+        const id = decodeURIComponent(path.replace('/blog/', ''));
+        setSelectedArticleId(id);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        return;
       }
       setSelectedArticleId(null);
     };
 
-    window.addEventListener('hashchange', handleHash);
-    handleHash();
-    return () => window.removeEventListener('hashchange', handleHash);
+    window.addEventListener('popstate', handlePath);
+    handlePath();
+    return () => window.removeEventListener('popstate', handlePath);
   }, []);
 
   const handleArticleClick = (id: string) => {
-    window.location.hash = `#/policy/blog?blog-id=${id}`;
+    navigateToPath(`/blog/${id}`);
   };
 
   const handleBackToList = () => {
-    window.location.hash = `#/policy/blog`;
+    navigateToPath('/blog');
   };
 
   const blogPosts: BlogPost[] = [
@@ -346,7 +349,7 @@ export default function BlogView({ onSelectTool, onClose }: BlogViewProps) {
           'logo': 'https://toolhub.com/favicon.png'
         },
         'datePublished': '2026-06-01',
-        'mainEntityOfPage': `https://toolhub.com/#/policy/blog?blog-id=${selectedPost.id}`
+        'mainEntityOfPage': `https://toolhub.com/blog/${selectedPost.id}`
       };
     }
 
@@ -355,7 +358,7 @@ export default function BlogView({ onSelectTool, onClose }: BlogViewProps) {
       '@type': 'Blog',
       'name': 'ToolHub Educational Blog Hub',
       'description': 'Highly-rated guide articles on utility tools, on-device cryptography, QR scaling guidelines, and formatted APIs metrics to simplify everyday workflows.',
-      'url': 'https://toolhub.com/#/policy/blog'
+      'url': 'https://toolhub.com/blog'
     };
   };
 

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Direction Config
-Sitemap: https://toolhub.com/sitemap.xml
+Sitemap: https://toolhub-2026.vercel.app/sitemap.xml

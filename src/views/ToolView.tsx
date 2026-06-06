@@ -56,7 +56,7 @@ export default function ToolView({ toolId, onSelectTool, onCopySuccess }: ToolVi
           '@type': 'ListItem',
           position: 2,
           name: tool.name,
-          item: `https://toolhub.com/#/${tool.id}`,
+          item: `https://toolhub.com/${tool.id}`,
         },
       ],
     };

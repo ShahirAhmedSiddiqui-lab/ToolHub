@@ -28,14 +28,20 @@ export default function App() {
     }
   }, []);
 
-  // Set up standard hash routing triggers to parse URLs automatically
+  // Set up path-based routing triggers to parse URLs automatically.
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (!hash || hash === '#/' || hash === '#/explore') {
+    const handleRouteChange = () => {
+      const legacyHash = window.location.hash;
+      if (legacyHash.startsWith('#/')) {
+        const legacyPath = legacyHash.replace(/^#/, '') || '/';
+        window.history.replaceState(null, '', legacyPath);
+      }
+
+      const path = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (path === '/' || path === '/explore') {
         setActiveTool(null);
         setActivePolicy(null);
-        if (hash === '#/explore') {
+        if (path === '/explore') {
           setTimeout(() => {
             const el = document.getElementById('tools-grid-anchor');
             if (el) {
@@ -45,28 +51,27 @@ export default function App() {
         } else {
           window.scrollTo({ top: 0, behavior: 'instant' });
         }
-      } else if (hash.startsWith('#/policy/')) {
-        const policyVal = hash.replace('#/policy/', '');
-        if (policyVal.startsWith('blog')) {
-          setActivePolicy('blog');
-        } else {
-          setActivePolicy(policyVal as any);
-        }
+      } else if (path === '/blog' || path.startsWith('/blog/')) {
+        setActivePolicy('blog');
+        setActiveTool(null);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (['/privacy', '/terms', '/about', '/sitemap'].includes(path)) {
+        setActivePolicy(path.slice(1) as any);
         setActiveTool(null);
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else {
-        const toolVal = hash.replace('#/', '') as ToolId;
+        const toolVal = path.slice(1) as ToolId;
         setActiveTool(toolVal);
         setActivePolicy(null);
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // trigger initial page matches on loads
+    window.addEventListener('popstate', handleRouteChange);
+    handleRouteChange(); // trigger initial page matches on loads
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
 
@@ -82,19 +87,15 @@ export default function App() {
   };
 
   const handleSelectTool = (id: string | null) => {
-    if (!id) {
-      window.location.hash = '#/';
-    } else {
-      window.location.hash = `#/${id}`;
-    }
+    const nextPath = id ? `/${id}` : '/';
+    window.history.pushState(null, '', nextPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   const handleShowPolicy = (type: 'privacy' | 'terms' | 'about' | 'sitemap' | 'blog' | null) => {
-    if (!type) {
-      window.location.hash = '#/';
-    } else {
-      window.location.hash = `#/policy/${type}`;
-    }
+    const nextPath = type ? `/${type}` : '/';
+    window.history.pushState(null, '', nextPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   const handleShowToast = (msg: string = 'Copied to Clipboard!') => {

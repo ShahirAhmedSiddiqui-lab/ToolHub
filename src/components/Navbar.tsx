@@ -11,6 +11,12 @@ interface NavbarProps {
 export default function Navbar({ onSelectTool, onShowPolicy, activePolicy }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleExploreClick = () => {
+    window.history.pushState(null, '', '/explore');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    setIsMobileMenuOpen(false);
+  };
+
   const handleMenuClick = (type: 'privacy' | 'terms' | 'about' | 'sitemap' | 'blog' | null) => {
     onShowPolicy(type);
     setIsMobileMenuOpen(false);
@@ -84,10 +90,7 @@ export default function Navbar({ onSelectTool, onShowPolicy, activePolicy }: Nav
         <div className="flex items-center gap-2">
           {/* Desktop Explore Button */}
           <button
-            onClick={() => {
-              window.location.hash = '#/explore';
-              setIsMobileMenuOpen(false);
-            }}
+            onClick={handleExploreClick}
             className="hidden sm:inline-block px-5 py-1.5 bg-[#FF334B] hover:bg-[#E11D48] text-white text-xs font-extrabold font-sans rounded-full transition-all shadow-sm hover:shadow-md hover:shadow-rose-100 cursor-pointer"
           >
             Explore
@@ -157,10 +160,7 @@ export default function Navbar({ onSelectTool, onShowPolicy, activePolicy }: Nav
               Educational Blog Hub
             </button>
             <button
-              onClick={() => {
-                window.location.hash = '#/explore';
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={handleExploreClick}
               className="w-full text-center px-4 py-2.5 bg-[#FF334B] hover:bg-[#E11D48] text-white text-xs font-black rounded-lg transition-all shadow-xs font-sans uppercase tracking-wider"
             >
               Explore All Tools
