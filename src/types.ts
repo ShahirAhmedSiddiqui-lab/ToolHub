@@ -15,7 +15,17 @@ export type ToolId =
   | 'json-formatter'
   | 'unit-converter'
   | 'color-palette-generator'
-  | 'lorem-ipsum-generator';
+  | 'lorem-ipsum-generator'
+  | 'discount-calculator'
+  | 'tip-calculator'
+  | 'gpa-calculator'
+  | 'binary-converter'
+  | 'base64-encoder-decoder'
+  | 'url-encoder-decoder'
+  | 'uuid-generator'
+  | 'jwt-decoder'
+  | 'hash-generator'
+  | 'hex-rgb-converter';
 
 export interface Tool {
   id: ToolId;

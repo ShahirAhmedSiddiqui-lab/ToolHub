@@ -11,6 +11,7 @@ import { useAdsterraPopunder } from './components/AdComponent';
 export default function App() {
   const [activeTool, setActiveTool] = useState<ToolId | null>(null);
   const [activePolicy, setActivePolicy] = useState<'privacy' | 'terms' | 'about' | 'sitemap' | 'blog' | null>(null);
+  const [showAllTools, setShowAllTools] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -41,28 +42,24 @@ export default function App() {
       if (path === '/' || path === '/explore') {
         setActiveTool(null);
         setActivePolicy(null);
-        if (path === '/explore') {
-          setTimeout(() => {
-            const el = document.getElementById('tools-grid-anchor');
-            if (el) {
-              el.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 80);
-        } else {
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        }
+        setShowAllTools(path === '/explore');
+        document.title = 'ToolHub - Free Online Tools';
+        window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (path === '/blog' || path.startsWith('/blog/')) {
         setActivePolicy('blog');
         setActiveTool(null);
+        setShowAllTools(false);
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (['/privacy', '/terms', '/about', '/sitemap'].includes(path)) {
         setActivePolicy(path.slice(1) as any);
         setActiveTool(null);
+        setShowAllTools(false);
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else {
         const toolVal = path.slice(1) as ToolId;
         setActiveTool(toolVal);
         setActivePolicy(null);
+        setShowAllTools(false);
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
@@ -134,7 +131,7 @@ export default function App() {
             onCopySuccess={() => handleShowToast('Copied text successfully to your clipboard!')}
           />
         ) : (
-          <HomeView onSelectTool={handleSelectTool} />
+          <HomeView onSelectTool={handleSelectTool} showAllTools={showAllTools} />
         )}
       </main>
 

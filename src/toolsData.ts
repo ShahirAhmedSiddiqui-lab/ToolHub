@@ -462,5 +462,135 @@ The ToolHub **Lorem Ipsum Generator** provides high-quality pseudorandom text mo
 
 ### Professional Design Utilization
 Deploy standard dummy text when launching design wireframes for clients. Once they approve the layout\'s visual balance, typography hierarchy, and general container styles, replace the text with active copywriting.`
+  },
+  {
+    id: 'discount-calculator',
+    name: 'Discount Calculator',
+    description: 'Calculate sale price, savings, and optional tax from any discount percentage.',
+    category: 'math',
+    iconName: 'BadgePercent',
+    seoTitle: 'Free Discount Calculator - Sale Price and Savings Tool',
+    seoDescription: 'Calculate discounted prices, savings, and final totals with optional tax directly in your browser.',
+    keywords: ['discount calculator', 'sale price calculator', 'savings calculator', 'price after discount'],
+    faqs: [{ question: 'Is the discount calculator client-side?', answer: 'Yes. All price calculations run locally in your browser.' }],
+    seoArticle: `### Fast Discount Math
+Use this discount calculator to find the amount saved, the price after discount, and the final total after optional tax. It is useful for shopping, invoices, retail pricing, and quick sale comparisons.`
+  },
+  {
+    id: 'tip-calculator',
+    name: 'Tip Calculator',
+    description: 'Calculate tip amount, total bill, and per-person split instantly.',
+    category: 'math',
+    iconName: 'Receipt',
+    seoTitle: 'Free Tip Calculator - Split Bills and Tips Online',
+    seoDescription: 'Calculate restaurant tips, total bill amount, and split payments by group size instantly.',
+    keywords: ['tip calculator', 'bill splitter', 'restaurant tip', 'split bill calculator'],
+    faqs: [{ question: 'Can I split the bill?', answer: 'Yes. Enter the number of people to calculate the per-person total.' }],
+    seoArticle: `### Simple Tip and Bill Splitting
+Quickly calculate a tip percentage, final bill total, and fair split per person. The tool runs entirely in the browser and works for restaurants, delivery, services, and group payments.`
+  },
+  {
+    id: 'gpa-calculator',
+    name: 'GPA Calculator',
+    description: 'Calculate weighted GPA from grade points and course credits.',
+    category: 'math',
+    iconName: 'GraduationCap',
+    seoTitle: 'Free GPA Calculator - Weighted Grade Point Average',
+    seoDescription: 'Calculate GPA from comma-separated grade points and credit hours with a fast client-side weighted average.',
+    keywords: ['gpa calculator', 'grade calculator', 'weighted gpa', 'college gpa'],
+    faqs: [{ question: 'How do I enter courses?', answer: 'Enter comma-separated grade points and matching comma-separated credit values.' }],
+    seoArticle: `### Weighted GPA Calculation
+This GPA calculator multiplies each grade point by its credit value, totals the points, and divides by total credits. It is designed for quick student grade planning without uploading data.`
+  },
+  {
+    id: 'binary-converter',
+    name: 'Binary Converter',
+    description: 'Convert plain text to binary and binary values back to readable text.',
+    category: 'dev',
+    iconName: 'Binary',
+    seoTitle: 'Free Binary Converter - Text to Binary and Binary to Text',
+    seoDescription: 'Convert text into 8-bit binary groups or decode binary strings back to text in your browser.',
+    keywords: ['binary converter', 'text to binary', 'binary to text', 'ascii binary'],
+    faqs: [{ question: 'What binary format is used?', answer: 'Text is converted into 8-bit character binary groups separated by spaces.' }],
+    seoArticle: `### Text and Binary Conversion
+Use this converter to encode readable text as binary or decode binary groups back into text. It is handy for learning ASCII, testing encodings, and developer utilities.`
+  },
+  {
+    id: 'base64-encoder-decoder',
+    name: 'Base64 Encoder/Decoder',
+    description: 'Encode text to Base64 or decode Base64 strings back to readable text.',
+    category: 'dev',
+    iconName: 'Code2',
+    seoTitle: 'Free Base64 Encoder and Decoder Online',
+    seoDescription: 'Encode and decode Base64 strings locally in your browser with no server upload.',
+    keywords: ['base64 encoder', 'base64 decoder', 'encode base64', 'decode base64'],
+    faqs: [{ question: 'Does this upload my text?', answer: 'No. Encoding and decoding happens fully client-side.' }],
+    seoArticle: `### Base64 Encoding and Decoding
+Base64 is commonly used to transport text-safe versions of data in APIs, tokens, and configuration values. This tool helps encode and decode strings locally and quickly.`
+  },
+  {
+    id: 'url-encoder-decoder',
+    name: 'URL Encoder/Decoder',
+    description: 'Encode URLs for safe query strings or decode URL-escaped text.',
+    category: 'dev',
+    iconName: 'Link',
+    seoTitle: 'Free URL Encoder and Decoder Online',
+    seoDescription: 'Encode and decode URL components for query strings, links, and web development workflows.',
+    keywords: ['url encoder', 'url decoder', 'encode url', 'decode url', 'percent encoding'],
+    faqs: [{ question: 'What does URL encoding do?', answer: 'It converts spaces and special characters into safe escaped URL characters.' }],
+    seoArticle: `### Safe URL Encoding
+URL encoding makes query strings and link parameters safe to share by escaping spaces and special characters. Decode mode reverses encoded values for inspection and debugging.`
+  },
+  {
+    id: 'uuid-generator',
+    name: 'UUID Generator',
+    description: 'Generate random UUID v4 identifiers locally in your browser.',
+    category: 'dev',
+    iconName: 'Fingerprint',
+    seoTitle: 'Free UUID Generator - Random UUID v4 Online',
+    seoDescription: 'Generate secure random UUID v4 identifiers with one click using browser crypto APIs.',
+    keywords: ['uuid generator', 'uuid v4', 'random id generator', 'guid generator'],
+    faqs: [{ question: 'Which UUID version is generated?', answer: 'The tool generates UUID v4 values using the browser crypto API.' }],
+    seoArticle: `### UUID v4 Generation
+UUIDs are useful for database records, test IDs, API payloads, and local development. This generator creates random version 4 UUIDs directly in the browser.`
+  },
+  {
+    id: 'jwt-decoder',
+    name: 'JWT Decoder',
+    description: 'Decode JWT header and payload JSON without verifying or uploading tokens.',
+    category: 'dev',
+    iconName: 'KeyRound',
+    seoTitle: 'Free JWT Decoder - Decode Header and Payload',
+    seoDescription: 'Decode JWT token header and payload locally for debugging authentication claims.',
+    keywords: ['jwt decoder', 'decode jwt', 'json web token decoder', 'token debugger'],
+    faqs: [{ question: 'Does this verify signatures?', answer: 'No. It only decodes the visible header and payload for inspection.' }],
+    seoArticle: `### JWT Payload Inspection
+JWTs contain Base64URL-encoded header and payload sections. This decoder helps inspect claims locally, which is useful for debugging authentication flows and API integrations.`
+  },
+  {
+    id: 'hash-generator',
+    name: 'Hash Generator',
+    description: 'Generate SHA-256, SHA-384, and SHA-512 hashes from text.',
+    category: 'dev',
+    iconName: 'Hash',
+    seoTitle: 'Free Hash Generator - SHA-256, SHA-384, SHA-512',
+    seoDescription: 'Generate secure SHA hashes from text locally with browser crypto APIs.',
+    keywords: ['hash generator', 'sha256 generator', 'sha512 hash', 'text hash'],
+    faqs: [{ question: 'Which hashes are supported?', answer: 'SHA-256, SHA-384, and SHA-512 are supported.' }],
+    seoArticle: `### Browser-Based Hashing
+Hash functions create deterministic fingerprints for text. Use this tool for checksums, test data, and development workflows without sending input to a server.`
+  },
+  {
+    id: 'hex-rgb-converter',
+    name: 'HEX to RGB Converter',
+    description: 'Convert HEX color codes to RGB values and RGB values back to HEX.',
+    category: 'design',
+    iconName: 'Pipette',
+    seoTitle: 'Free HEX to RGB Converter - RGB to HEX Color Tool',
+    seoDescription: 'Convert web color values between HEX and RGB formats instantly for CSS, design, and UI work.',
+    keywords: ['hex to rgb', 'rgb to hex', 'color converter', 'css color tool'],
+    faqs: [{ question: 'Can it convert both directions?', answer: 'Yes. Convert HEX to RGB and RGB back to HEX.' }],
+    seoArticle: `### Web Color Conversion
+Designers and developers often move between HEX and RGB color formats. This converter keeps CSS color work fast by translating values both ways in the browser.`
   }
 ];

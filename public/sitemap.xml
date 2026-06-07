@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://toolhub-2026.vercel.app/</loc>
+    <loc>https://toolhub2026.vercel.app/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -10,75 +10,135 @@
 
   <!-- Tools -->
   <url>
-    <loc>https://toolhub-2026.vercel.app/word-counter</loc>
+    <loc>https://toolhub2026.vercel.app/word-counter</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/age-calculator</loc>
+    <loc>https://toolhub2026.vercel.app/age-calculator</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/percentage-calculator</loc>
+    <loc>https://toolhub2026.vercel.app/percentage-calculator</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/text-case-converter</loc>
+    <loc>https://toolhub2026.vercel.app/text-case-converter</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/password-generator</loc>
+    <loc>https://toolhub2026.vercel.app/password-generator</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/qr-code-generator</loc>
+    <loc>https://toolhub2026.vercel.app/qr-code-generator</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/json-formatter</loc>
+    <loc>https://toolhub2026.vercel.app/json-formatter</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/unit-converter</loc>
+    <loc>https://toolhub2026.vercel.app/unit-converter</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/color-palette-generator</loc>
+    <loc>https://toolhub2026.vercel.app/color-palette-generator</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/lorem-ipsum-generator</loc>
+    <loc>https://toolhub2026.vercel.app/lorem-ipsum-generator</loc>
     <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/discount-calculator</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/tip-calculator</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/gpa-calculator</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/binary-converter</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/base64-encoder-decoder</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/url-encoder-decoder</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/uuid-generator</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/jwt-decoder</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/hash-generator</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toolhub2026.vercel.app/hex-rgb-converter</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://toolhub-2026.vercel.app/privacy</loc>
+    <loc>https://toolhub2026.vercel.app/privacy</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://toolhub-2026.vercel.app/terms</loc>
+    <loc>https://toolhub2026.vercel.app/terms</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

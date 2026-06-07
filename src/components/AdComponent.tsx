@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface AdComponentProps {
   slot: 'homepage-top' | 'homepage-middle' | 'homepage-bottom' | 'tool-top' | 'tool-bottom' | 'tool-content';
@@ -6,14 +6,55 @@ interface AdComponentProps {
 
 export default function AdComponent({ slot }: AdComponentProps) {
   const [isMobile, setIsMobile] = useState(false);
+  const [shouldLoadAd, setShouldLoadAd] = useState(false);
+  const adRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const nextIsMobile = window.innerWidth < 768;
+      setIsMobile((current) => (current === nextIsMobile ? current : nextIsMobile));
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    const runWhenIdle = idleWindow.requestIdleCallback || ((callback: () => void) => window.setTimeout(callback, 600));
+    const cancelIdle = idleWindow.cancelIdleCallback || window.clearTimeout;
+    let idleId: number | null = null;
+
+    const markReady = () => {
+      if (idleId !== null) return;
+      idleId = runWhenIdle(() => setShouldLoadAd(true));
+    };
+
+    if (!('IntersectionObserver' in window) || !adRef.current) {
+      markReady();
+      return () => {
+        if (idleId !== null) cancelIdle(idleId);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          markReady();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '360px 0px' }
+    );
+
+    observer.observe(adRef.current);
+    return () => {
+      observer.disconnect();
+      if (idleId !== null) cancelIdle(idleId);
+    };
   }, []);
 
   // Map slots & screen resolutions to the provided Adsterra Keys and dimensions
@@ -136,19 +177,23 @@ export default function AdComponent({ slot }: AdComponentProps) {
         Sponsored Advertisement
       </div>
       <div
-        className={`relative overflow-hidden bg-slate-50/50 dark:bg-slate-800/10 border border-dashed border-slate-200/80 dark:border-slate-700/80 rounded-xl flex items-center justify-center transition-all ${adConfig.className}`}
+        ref={adRef}
+        className={`relative overflow-hidden bg-slate-50/50 dark:bg-slate-800/10 border border-dashed border-slate-200/80 dark:border-slate-700/80 rounded-xl flex items-center justify-center ${adConfig.className}`}
         style={{ width: `${width}px`, height: `${height}px` }}
       >
-        <iframe
-          key={`${key}-${isMobile}-${slot}`}
-          srcDoc={iframeSrcDoc}
-          width={width}
-          height={height}
-          scrolling="no"
-          frameBorder="0"
-          className="border-0 overflow-hidden z-10"
-          title={`sponsored-ad-${slot}`}
-        />
+        {shouldLoadAd && (
+          <iframe
+            key={`${key}-${isMobile}-${slot}`}
+            srcDoc={iframeSrcDoc}
+            width={width}
+            height={height}
+            scrolling="no"
+            frameBorder="0"
+            loading="lazy"
+            className="border-0 overflow-hidden z-10"
+            title={`sponsored-ad-${slot}`}
+          />
+        )}
 
         {/* Subtle decorative Ad label branding */}
         <div className="absolute right-2 bottom-1.5 flex items-center gap-1 z-0 pointer-events-none opacity-40">
@@ -167,19 +212,34 @@ export default function AdComponent({ slot }: AdComponentProps) {
 export function useAdsterraPopunder(active: boolean = true) {
   useEffect(() => {
     if (!active) return;
-    
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = true;
-    
-    // Genuine high-performance invoke.js for Popunders
-    script.src = '//www.highperformanceformat.com/8ee7fc46bac1716f0a3823cd40715021/invoke.js';
-    
-    document.body.appendChild(script);
+
+    const loadScript = () => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = '//www.highperformanceformat.com/8ee7fc46bac1716f0a3823cd40715021/invoke.js';
+      document.body.appendChild(script);
+      return script;
+    };
+
+    let script: HTMLScriptElement | null = null;
+    let idleId: number | null = null;
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    const idleCallback = idleWindow.requestIdleCallback || ((callback: () => void) => window.setTimeout(callback, 1200));
+    const cancelIdleCallback = idleWindow.cancelIdleCallback || window.clearTimeout;
+    idleId = idleCallback(() => {
+      script = loadScript();
+    });
     
     return () => {
+      if (idleId !== null) {
+        cancelIdleCallback(idleId);
+      }
       try {
-        if (document.body.contains(script)) {
+        if (script && document.body.contains(script)) {
           document.body.removeChild(script);
         }
       } catch (e) {

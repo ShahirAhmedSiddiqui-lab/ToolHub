@@ -15,6 +15,7 @@ import JsonFormatter from '../components/tools/JsonFormatter';
 import UnitConverter from '../components/tools/UnitConverter';
 import ColorGenerator from '../components/tools/ColorGenerator';
 import LoremGenerator from '../components/tools/LoremGenerator';
+import QuickClientTools from '../components/tools/QuickClientTools';
 
 interface ToolViewProps {
   toolId: ToolId;
@@ -121,6 +122,17 @@ export default function ToolView({ toolId, onSelectTool, onCopySuccess }: ToolVi
         return <ColorGenerator onCopySuccess={onCopySuccess} />;
       case 'lorem-ipsum-generator':
         return <LoremGenerator onCopySuccess={onCopySuccess} />;
+      case 'discount-calculator':
+      case 'tip-calculator':
+      case 'gpa-calculator':
+      case 'binary-converter':
+      case 'base64-encoder-decoder':
+      case 'url-encoder-decoder':
+      case 'uuid-generator':
+      case 'jwt-decoder':
+      case 'hash-generator':
+      case 'hex-rgb-converter':
+        return <QuickClientTools toolId={tool.id} onCopySuccess={onCopySuccess} />;
       default:
         return <div className="p-4 bg-slate-50 border rounded text-center">Module is preparing deployment.</div>;
     }
